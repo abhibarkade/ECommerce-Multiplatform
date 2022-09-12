@@ -32,16 +32,19 @@ class _MainProductPageState extends State<MainProductPage> {
                     children: [
                       BigText(
                         text: 'India',
-                        color: AppColors.mainColor,
+                        color: Colors.black,
                         size: Dimensions.height24,
                       ),
                       Row(
                         children: [
                           SmallText(
                             text: 'Sangli',
-                            color: Colors.black,
+                            color: Colors.black54,
                           ),
-                          const Icon(Icons.arrow_drop_down_rounded)
+                          const Icon(
+                            Icons.arrow_drop_down_rounded,
+                            color: Colors.black54,
+                          )
                         ],
                       )
                     ],

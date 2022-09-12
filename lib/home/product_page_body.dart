@@ -209,11 +209,11 @@ class _ProductPageBodyState extends State<ProductPageBody> {
                             text: 'Black'),
                         IconWithTextWidget(
                             icon: Icons.location_on,
-                            iconColor: AppColors.mainColor,
+                            iconColor: Colors.redAccent,
                             text: 'India'),
                         IconWithTextWidget(
                             icon: Icons.access_time_filled_rounded,
-                            iconColor: AppColors.mainColor,
+                            iconColor: AppColors.iconColor2,
                             text: '2-4 Days'),
                       ],
                     )
