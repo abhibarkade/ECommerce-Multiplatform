@@ -187,7 +187,7 @@ class _ProductPageBodyState extends State<ProductPageBody> {
                               5,
                               (index) => Icon(
                                     Icons.star,
-                                    color: AppColors.mainColor,
+                                    color: AppColors.iconColor1,
                                     size: Dimensions.height15,
                                   )),
                         ),
