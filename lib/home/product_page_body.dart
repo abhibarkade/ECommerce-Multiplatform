@@ -72,39 +72,86 @@ class _ProductPageBodyState extends State<ProductPageBody> {
           ),
         ),
         // Products List
-        Container(
-          height: 700,
-          child: ListView.builder(
-            itemCount: 10,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(
-                    left: Dimensions.width20,
-                    right: Dimensions.width20,
-                    bottom: Dimensions.width10),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 120,
-                      width: 120,
+        ListView.builder(
+          itemCount: 10,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(
+                  left: Dimensions.width20,
+                  right: Dimensions.width20,
+                  bottom: Dimensions.width10),
+              child: Row(
+                children: [
+                  // Image Part
+                  Container(
+                    height: Dimensions.listViewImgSize,
+                    width: Dimensions.listViewImgSize,
+                    decoration: BoxDecoration(
+                      borderRadius:
+                      BorderRadius.circular(Dimensions.radius20),
+                      color: Colors.white38,
+                      image: const DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/images/product.jpg'),
+                      ),
+                    ),
+                  ),
+                  // Text Part
+                  Expanded(
+                    child: Container(
+                      height: Dimensions.listViewContainerSize,
                       decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(Dimensions.radius20),
-                        color: Colors.white38,
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/images/product.jpg'),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(Dimensions.radius20),
+                          bottomRight: Radius.circular(Dimensions.radius20),
+                        ),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: Dimensions.width20,
+                          right: Dimensions.width20,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BigText(
+                              text: 'Boat Wired / Wireless',
+                              size: Dimensions.font16,
+                            ),
+                            SizedBox(height: Dimensions.height10),
+                            SmallText(text: 'With Mic controller'),
+                            SizedBox(height: Dimensions.height10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                IconWithTextWidget(
+                                    icon: Icons.circle_sharp,
+                                    iconColor: AppColors.iconColor1,
+                                    text: 'Black'),
+                                IconWithTextWidget(
+                                    icon: Icons.location_on,
+                                    iconColor: Colors.redAccent,
+                                    text: 'India'),
+                                IconWithTextWidget(
+                                    icon: Icons.access_time_filled_rounded,
+                                    iconColor: AppColors.iconColor2,
+                                    text: '2-4 Days'),
+                              ],
+                            )
+                          ],
                         ),
                       ),
-                    )
-                  ],
-                ),
-              );
-            },
-          ),
-        )
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
+        ),
       ],
     );
   }
