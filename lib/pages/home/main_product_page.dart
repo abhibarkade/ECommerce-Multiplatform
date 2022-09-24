@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopstag/home/product_page_body.dart';
+import 'package:shopstag/pages/home/product_page_body.dart';
 import 'package:shopstag/util/colors.dart';
 import 'package:shopstag/util/dimensions.dart';
 import 'package:shopstag/widgets/big_text.dart';

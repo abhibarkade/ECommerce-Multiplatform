@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:shopstag/util/colors.dart';
 import 'package:shopstag/util/dimensions.dart';
+import 'package:shopstag/widgets/app_column.dart';
 import 'package:shopstag/widgets/big_text.dart';
 import 'package:shopstag/widgets/icon_with_text.dart';
 import 'package:shopstag/widgets/small_text.dart';
@@ -75,7 +76,7 @@ class _ProductPageBodyState extends State<ProductPageBody> {
         ListView.builder(
           itemCount: 10,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return Container(
               margin: EdgeInsets.only(
@@ -89,8 +90,7 @@ class _ProductPageBodyState extends State<ProductPageBody> {
                     height: Dimensions.listViewImgSize,
                     width: Dimensions.listViewImgSize,
                     decoration: BoxDecoration(
-                      borderRadius:
-                      BorderRadius.circular(Dimensions.radius20),
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
                       color: Colors.white38,
                       image: const DecorationImage(
                         fit: BoxFit.cover,
@@ -222,50 +222,7 @@ class _ProductPageBodyState extends State<ProductPageBody> {
                     top: Dimensions.height10,
                     left: Dimensions.height15,
                     right: Dimensions.height15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BigText(text: 'Boat Power on Bass'),
-                    SizedBox(height: Dimensions.height10),
-                    Row(
-                      children: [
-                        Wrap(
-                          children: List.generate(
-                              5,
-                              (index) => Icon(
-                                    Icons.star,
-                                    color: AppColors.iconColor1,
-                                    size: Dimensions.height15,
-                                  )),
-                        ),
-                        SizedBox(width: Dimensions.height10),
-                        SmallText(text: '4.5'),
-                        SizedBox(width: Dimensions.height10),
-                        SmallText(text: '147'),
-                        SizedBox(width: Dimensions.height10),
-                        SmallText(text: 'Comment'),
-                      ],
-                    ),
-                    SizedBox(height: Dimensions.height20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        IconWithTextWidget(
-                            icon: Icons.circle_sharp,
-                            iconColor: AppColors.iconColor1,
-                            text: 'Black'),
-                        IconWithTextWidget(
-                            icon: Icons.location_on,
-                            iconColor: Colors.redAccent,
-                            text: 'India'),
-                        IconWithTextWidget(
-                            icon: Icons.access_time_filled_rounded,
-                            iconColor: AppColors.iconColor2,
-                            text: '2-4 Days'),
-                      ],
-                    )
-                  ],
-                ),
+                child: AppColumn(text: 'Boat Power on Bass'),
               ),
             ),
           ),
