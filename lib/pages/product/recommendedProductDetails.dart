@@ -22,9 +22,8 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
         slivers: [
           SliverAppBar(
             title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                AppIcon(icon: Icons.clear),
                 AppIcon(icon: Icons.shopping_cart_outlined)
               ],
             ),
