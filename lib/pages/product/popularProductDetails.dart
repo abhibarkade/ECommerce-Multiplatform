@@ -4,6 +4,7 @@ import 'package:shopstag/util/dimensions.dart';
 import 'package:shopstag/widgets/app_column.dart';
 import 'package:shopstag/widgets/app_icon.dart';
 import 'package:shopstag/widgets/big_text.dart';
+import 'package:shopstag/widgets/expandable_text_widget.dart';
 
 class PopularProductDetails extends StatefulWidget {
   const PopularProductDetails({Key? key}) : super(key: key);
@@ -65,15 +66,19 @@ class _PopularProductDetailsState extends State<PopularProductDetails> {
                   AppColumn(text: "Boat Power on Bass"),
                   SizedBox(height: Dimensions.height20),
                   BigText(text: 'Introduce'),
+                  const Expanded(
+                      child: SingleChildScrollView(
+                          child: ExpandableTextWidget(
+                              text:
+                                  'Sound Quality: Redgear Cloak comes equipped with 50mm Driver with Enhanced audio bass and clarity which dramatically improves your in-game sound experience. Inline Remote : NoMicrophone: It comes equipped with a Omni-directional microphone which can be used as per you gaming situations. You can just put it up if it is not in use.Build Quality: It’s luxurious noise-isolating memory foam ear pads and adjustable split headband reduces pressure and provides optimal comfort for long gaming sessions.Other Features: This headset has an amazing RGB LED light effect on ear-ups and tip of the microphone. It also comes equipped with volume control, so just scroll up or down to adjust it.')))
                 ],
               ),
             ),
-          )
-          // Expandable
+          ),
         ],
       ),
       bottomNavigationBar: Container(
-        height: Dimensions.bottomHeightBar,
+        height: 120,
         padding: EdgeInsets.only(
             top: Dimensions.height24,
             left: Dimensions.width30,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shopstag/util/colors.dart';
 import 'package:shopstag/util/dimensions.dart';
+import 'package:shopstag/widgets/small_text.dart';
 
 class ExpandableTextWidget extends StatefulWidget {
   final String text;
@@ -14,7 +16,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
   late String firstHalf;
   late String secondHalf;
 
-  bool hiddenText = true;
+  bool hiddenText = false;
   double textHeight = Dimensions.screenHeight / 5.63;
 
   @override
@@ -32,6 +34,33 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: secondHalf.isEmpty
+          ? SmallText(text: firstHalf)
+          : Column(
+              children: [
+                Text(hiddenText ? (firstHalf) : (firstHalf + secondHalf)),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      hiddenText = !hiddenText;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      SmallText(
+                        text: 'Show more',
+                        color: AppColors.mainColor,
+                      ),
+                      Icon(
+                        Icons.arrow_drop_down,
+                        color: AppColors.mainColor,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+    );
   }
 }
