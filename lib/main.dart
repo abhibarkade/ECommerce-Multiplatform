@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         darkTheme: ThemeData(primaryColor: Colors.red),
-        home: RecommendedProductDetails(),
+        home: const MainProductPage(),
       ),
     );
   }

@@ -142,7 +142,7 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
                 left: Dimensions.width30,
                 right: Dimensions.width30),
             decoration: BoxDecoration(
-              color: AppColors.buttonBackgroundColor,
+              color: AppColors.mainColor,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(Dimensions.radius20 * 2),
                 topLeft: Radius.circular(Dimensions.radius20 * 2),
@@ -161,7 +161,7 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
                         color: Colors.white),
                     child: Icon(
                       Icons.favorite,
-                      color: AppColors.mainColor,
+                      color: Colors.pinkAccent,
                     ),
                   ),
                   onTap: () {
@@ -178,10 +178,9 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
                       right: Dimensions.height10 + 5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimensions.radius16),
-                      color: AppColors.mainColor),
+                      color: Colors.white),
                   child: BigText(
                     text: '₹ $total |  Add to Cart',
-                    color: Colors.white,
                   ),
                 )
               ],
