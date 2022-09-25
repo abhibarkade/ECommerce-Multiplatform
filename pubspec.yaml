@@ -16,6 +16,8 @@ dependencies:
   get: ^4.1.4
   oktoast: ^3.3.0
   badges: ^2.0.3
+  auto_size_text: ^3.0.0
+  stroke_text: ^0.0.2
 
 dev_dependencies:
   flutter_test:

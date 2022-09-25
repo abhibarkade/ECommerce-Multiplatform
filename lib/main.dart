@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:shopstag/pages/cart/cart.dart';
 import 'package:shopstag/pages/home/main_product_page.dart';
 import 'package:shopstag/pages/product/recommendedProductDetails.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         darkTheme: ThemeData(primaryColor: Colors.red),
-        home: const MainProductPage(),
+        home: const Cart(),
       ),
     );
   }
