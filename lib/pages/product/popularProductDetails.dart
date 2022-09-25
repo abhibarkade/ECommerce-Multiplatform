@@ -66,6 +66,7 @@ class _PopularProductDetailsState extends State<PopularProductDetails> {
                   AppColumn(text: "Boat Power on Bass"),
                   SizedBox(height: Dimensions.height20),
                   BigText(text: 'Introduce'),
+                  SizedBox(height: Dimensions.height10),
                   const Expanded(
                       child: SingleChildScrollView(
                           child: ExpandableTextWidget(
@@ -127,7 +128,7 @@ class _PopularProductDetailsState extends State<PopularProductDetails> {
                   borderRadius: BorderRadius.circular(Dimensions.radius16),
                   color: AppColors.mainColor),
               child: BigText(
-                text: '\$120  |  Add to Cart',
+                text: '₹120  |  Add to Cart',
                 color: Colors.white,
               ),
             )
