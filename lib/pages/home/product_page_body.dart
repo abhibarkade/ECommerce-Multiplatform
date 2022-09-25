@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:shopstag/pages/product/popularProductDetails.dart';
 import 'package:shopstag/util/colors.dart';
 import 'package:shopstag/util/dimensions.dart';
 import 'package:shopstag/widgets/app_column.dart';
@@ -184,49 +185,57 @@ class _ProductPageBodyState extends State<ProductPageBody> {
 
     return Transform(
       transform: matrix4,
-      child: Stack(
-        children: [
-          Container(
-            height: Dimensions.pageViewContainer,
-            margin: const EdgeInsets.only(left: 8, right: 8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radius30),
-              color: index.isEven
-                  ? const Color(0xFF69c5df)
-                  : const Color(0xFF9294cc),
-              image: const DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/banner.png'),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: Dimensions.pageViewTextContainer,
-              margin: EdgeInsets.only(
-                  left: Dimensions.height30,
-                  right: Dimensions.height30,
-                  bottom: Dimensions.height30),
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => PopularProductDetails()));
+          });
+        },
+        child: Stack(
+          children: [
+            Container(
+              height: Dimensions.pageViewContainer,
+              margin: const EdgeInsets.only(left: 8, right: 8),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Color(0xFFe8e8e8),
-                        blurRadius: 5.0,
-                        offset: Offset(0, 5)),
-                  ]),
-              child: Container(
-                padding: EdgeInsets.only(
-                    top: Dimensions.height10,
-                    left: Dimensions.height15,
-                    right: Dimensions.height15),
-                child: AppColumn(text: 'Boat Power on Bass'),
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
+                color: index.isEven
+                    ? const Color(0xFF69c5df)
+                    : const Color(0xFF9294cc),
+                image: const DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('assets/images/banner.png'),
+                ),
               ),
             ),
-          ),
-        ],
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: Dimensions.pageViewTextContainer,
+                margin: EdgeInsets.only(
+                    left: Dimensions.height30,
+                    right: Dimensions.height30,
+                    bottom: Dimensions.height30),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Color(0xFFe8e8e8),
+                          blurRadius: 5.0,
+                          offset: Offset(0, 5)),
+                    ]),
+                child: Container(
+                  padding: EdgeInsets.only(
+                      top: Dimensions.height10,
+                      left: Dimensions.height15,
+                      right: Dimensions.height15),
+                  child: AppColumn(text: 'Boat Power on Bass'),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

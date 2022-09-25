@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:shopstag/util/colors.dart';
 import 'package:shopstag/util/dimensions.dart';
 import 'package:shopstag/widgets/app_column.dart';
@@ -14,6 +15,10 @@ class PopularProductDetails extends StatefulWidget {
 }
 
 class _PopularProductDetailsState extends State<PopularProductDetails> {
+  var cnt = 0;
+  var total = 0;
+  var _currentPrice = 1299;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +46,22 @@ class _PopularProductDetailsState extends State<PopularProductDetails> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.arrow_back_ios),
-                AppIcon(icon: Icons.shopping_cart_outlined),
+                InkWell(
+                  child: AppIcon(icon: Icons.arrow_back),
+                  onTap: () {
+                    setState(() {
+                      Navigator.pop(context);
+                    });
+                  },
+                ),
+                InkWell(
+                  child: AppIcon(icon: Icons.shopping_cart_outlined),
+                  onTap: () {
+                    setState(() {
+                      showToast('Cart');
+                    });
+                  },
+                ),
               ],
             ),
           ),
@@ -102,18 +121,37 @@ class _PopularProductDetailsState extends State<PopularProductDetails> {
                   color: Colors.white),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.remove,
-                    color: AppColors.signColor,
+                  InkWell(
+                    child: Icon(
+                      Icons.remove,
+                      color: AppColors.signColor,
+                    ),
+                    onTap: () {
+                      setState(() {
+                        if (cnt > 0) {
+                          cnt--;
+                          total -= _currentPrice;
+                        }
+                      });
+                    },
                   ),
                   SizedBox(width: Dimensions.width16 / 2),
                   BigText(
-                    text: '0',
+                    text: '$cnt',
+                    size: Dimensions.font20,
                   ),
                   SizedBox(width: Dimensions.width16 / 2),
-                  Icon(
-                    Icons.remove,
-                    color: AppColors.signColor,
+                  InkWell(
+                    child: Icon(
+                      Icons.add,
+                      color: AppColors.signColor,
+                    ),
+                    onTap: () {
+                      setState(() {
+                        cnt++;
+                        total += _currentPrice;
+                      });
+                    },
                   )
                 ],
               ),
@@ -128,8 +166,9 @@ class _PopularProductDetailsState extends State<PopularProductDetails> {
                   borderRadius: BorderRadius.circular(Dimensions.radius16),
                   color: AppColors.mainColor),
               child: BigText(
-                text: '₹120  |  Add to Cart',
+                text: '₹ $total  |  Add to Cart',
                 color: Colors.white,
+                size: Dimensions.font20,
               ),
             )
           ],

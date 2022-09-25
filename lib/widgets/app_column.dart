@@ -45,9 +45,9 @@ class AppColumn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
             IconWithTextWidget(
-                icon: Icons.circle_sharp,
-                iconColor: AppColors.iconColor1,
-                text: 'Black'),
+                icon: Icons.currency_rupee,
+                iconColor: Colors.black,
+                text: '1299'),
             IconWithTextWidget(
                 icon: Icons.location_on,
                 iconColor: Colors.redAccent,
