@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:shopstag/util/colors.dart';
 import 'package:shopstag/util/dimensions.dart';
 import 'package:shopstag/widgets/app_icon.dart';
@@ -15,6 +16,10 @@ class RecommendedProductDetails extends StatefulWidget {
 }
 
 class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
+  var _currentPrice = 1299;
+  var total = 0;
+  var cnt = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +29,14 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                AppIcon(icon: Icons.shopping_cart_outlined)
+                InkWell(
+                  child: AppIcon(icon: Icons.shopping_cart_outlined),
+                  onTap: () {
+                    setState(() {
+                      showToast('Shopping Cart');
+                    });
+                  },
+                ),
               ],
             ),
             pinned: true,
@@ -86,21 +98,39 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(
-                  icon: Icons.remove,
-                  iconColor: Colors.white,
-                  backgroundColor: AppColors.mainColor,
-                  size: Dimensions.radius30,
+                InkWell(
+                  child: AppIcon(
+                    icon: Icons.remove,
+                    iconColor: Colors.white,
+                    backgroundColor: AppColors.mainColor,
+                    size: Dimensions.radius30,
+                  ),
+                  onTap: () {
+                    setState(() {
+                      if (cnt > 0) {
+                        cnt--;
+                        total -= _currentPrice;
+                      }
+                    });
+                  },
                 ),
                 BigText(
-                  text: '₹1299' + '   x   ' + '0',
+                  text: '₹ $_currentPrice' + '   x   ' + '$cnt',
                   size: Dimensions.font26,
                 ),
-                AppIcon(
-                  icon: Icons.add,
-                  backgroundColor: AppColors.mainColor,
-                  iconColor: Colors.white,
-                  size: Dimensions.radius30,
+                InkWell(
+                  child: AppIcon(
+                    icon: Icons.add,
+                    backgroundColor: AppColors.mainColor,
+                    iconColor: Colors.white,
+                    size: Dimensions.radius30,
+                  ),
+                  onTap: () {
+                    setState(() {
+                      cnt++;
+                      total += _currentPrice;
+                    });
+                  },
                 ),
               ],
             ),
@@ -122,15 +152,23 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  padding: EdgeInsets.all(Dimensions.height10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius16),
-                      color: Colors.white),
-                  child: Icon(
-                    Icons.favorite,
-                    color: AppColors.mainColor,
+                InkWell(
+                  child: Container(
+                    padding: EdgeInsets.all(Dimensions.height10),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius16),
+                        color: Colors.white),
+                    child: Icon(
+                      Icons.favorite,
+                      color: AppColors.mainColor,
+                    ),
                   ),
+                  onTap: () {
+                    setState(() {
+                      showToast('Wishlist');
+                    });
+                  },
                 ),
                 Container(
                   padding: EdgeInsets.only(
@@ -142,7 +180,7 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
                       borderRadius: BorderRadius.circular(Dimensions.radius16),
                       color: AppColors.mainColor),
                   child: BigText(
-                    text: '₹1299  |  Add to Cart',
+                    text: '₹ $total |  Add to Cart',
                     color: Colors.white,
                   ),
                 )
