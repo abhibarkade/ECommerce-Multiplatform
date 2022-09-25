@@ -80,8 +80,8 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
         children: [
           Container(
             padding: EdgeInsets.only(
-                left: Dimensions.width30 * 2.5,
-                right: Dimensions.width30 * 2.5,
+                left: Dimensions.width30 * 4,
+                right: Dimensions.width30 * 4,
                 top: Dimensions.height30,
                 bottom: Dimensions.height30),
             child: Row(

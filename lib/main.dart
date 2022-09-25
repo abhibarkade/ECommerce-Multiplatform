@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shopstag/pages/home/main_product_page.dart';
-import 'package:shopstag/pages/product/popularProductDetails.dart';
 import 'package:shopstag/pages/product/recommendedProductDetails.dart';
 
+import 'helper/dependancies.dart' as dep;
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  dep.init();
   runApp(const MyApp());
 }
 
