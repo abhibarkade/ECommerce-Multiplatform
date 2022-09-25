@@ -1,4 +1,7 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:shopstag/util/colors.dart';
 import 'package:shopstag/util/dimensions.dart';
@@ -19,6 +22,7 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
   var _currentPrice = 1299;
   var total = 0;
   var cnt = 0;
+  int _cartItemCount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,23 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 InkWell(
-                  child: AppIcon(icon: Icons.shopping_cart_outlined),
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40 / 2),
+                      color: const Color(0xFFFCF4E4),
+                    ),
+                    child: Badge(
+                      badgeColor: AppColors.mainColor,
+                      badgeContent: Text('$cnt'),
+                      child: Icon(
+                        Icons.shopping_cart_outlined,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                    ),
+                  ),
                   onTap: () {
                     setState(() {
                       showToast('Shopping Cart');
@@ -166,22 +186,47 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
                   ),
                   onTap: () {
                     setState(() {
-                      showToast('Wishlist');
+                      Get.snackbar(
+                        "Wishlist Unavailable",
+                        "Please try again after some time",
+                        backgroundColor: AppColors.mainColor,
+                        colorText: Colors.white,
+                      );
                     });
                   },
                 ),
-                Container(
-                  padding: EdgeInsets.only(
-                      top: Dimensions.height10,
-                      bottom: Dimensions.height10,
-                      left: Dimensions.height10 + 5,
-                      right: Dimensions.height10 + 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius16),
-                      color: Colors.white),
-                  child: BigText(
-                    text: '₹ $total |  Add to Cart',
+                InkWell(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                        top: Dimensions.height10,
+                        bottom: Dimensions.height10,
+                        left: Dimensions.height10 + 5,
+                        right: Dimensions.height10 + 5),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius16),
+                        color: Colors.white),
+                    child: BigText(
+                      text: '₹ $total |  Add to Cart',
+                    ),
                   ),
+                  onTap: () {
+                    if (cnt == 0) {
+                      Get.snackbar(
+                        "Invalid product amount",
+                        "Select atleast 1 product",
+                        backgroundColor: AppColors.mainColor,
+                        colorText: Colors.white,
+                      );
+                    } else {
+                      Get.snackbar(
+                        "Added to Cart",
+                        "Checkout now",
+                        backgroundColor: AppColors.mainColor,
+                        colorText: Colors.white,
+                      );
+                    }
+                  },
                 )
               ],
             ),
