@@ -17,6 +17,7 @@ dependencies:
   oktoast: ^3.3.0
   badges: ^2.0.3
   auto_size_text: ^3.0.0
+  firebase_auth: ^3.11.2
 
 dev_dependencies:
   flutter_test:
