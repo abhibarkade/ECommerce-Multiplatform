@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shopstag/pages/cart/cart.dart';
 import 'package:shopstag/pages/home/product_page_body.dart';
+import 'package:shopstag/pages/wishlist/wishlist.dart';
 import 'package:shopstag/util/colors.dart';
 import 'package:shopstag/util/dimensions.dart';
 import 'package:shopstag/widgets/big_text.dart';
@@ -13,6 +15,23 @@ class MainProductPage extends StatefulWidget {
 }
 
 class _MainProductPageState extends State<MainProductPage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (index) {
+        case 1:
+          Navigator.push(context, MaterialPageRoute(builder: (cnt) => Cart()));
+          break;
+        case 2:
+          Navigator.push(
+              context, MaterialPageRoute(builder: (cnt) => WishList()));
+          break;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,6 +95,21 @@ class _MainProductPageState extends State<MainProductPage> {
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart), label: 'Cart'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.favorite), label: 'Wishlist'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: 'Setting'),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black38,
+          onTap: _onItemTapped,
+          elevation: 5),
     );
   }
 }

@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:shopstag/util/colors.dart';
-import 'package:shopstag/util/dimensions.dart';
-import 'package:shopstag/widgets/app_icon.dart';
-import 'package:shopstag/widgets/big_text.dart';
 
-class Cart extends StatefulWidget {
-  const Cart({Key? key}) : super(key: key);
+import '../../util/colors.dart';
+import '../../util/dimensions.dart';
+
+class WishList extends StatefulWidget {
+  const WishList({Key? key}) : super(key: key);
 
   @override
-  State<Cart> createState() => _CartState();
+  State<WishList> createState() => _WishListState();
 }
 
-class _CartState extends State<Cart> {
+class _WishListState extends State<WishList> {
   int cnt = 7;
-  var price = 1299;
-  var total = 7 * 1299;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopping Cart ($cnt)'),
+        title: Text('Wishlist ($cnt)'),
         backgroundColor: AppColors.mainColor,
       ),
       body: ListView.builder(
@@ -61,6 +57,7 @@ class _CartState extends State<Cart> {
                     margin: EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
                           'Boat Wired Headphone',
@@ -68,37 +65,6 @@ class _CartState extends State<Cart> {
                         ),
                         Text(
                           'RGB Wired Over Ear',
-                        ),
-                        SizedBox(height: Dimensions.height10),
-                        Row(
-                          children: [
-                            InkWell(
-                              child: AppIcon(icon: Icons.remove, size: 30),
-                              onTap: () {
-                                setState(() {
-                                  cnt--;
-                                  total -= price;
-                                  Get.snackbar(
-                                      'Product Removed', 'Add more from menu');
-                                });
-                              },
-                            ),
-                            SizedBox(width: Dimensions.width20 * 2),
-                            BigText(
-                              text: '1',
-                              size: Dimensions.font20,
-                            ),
-                            SizedBox(width: Dimensions.width20 * 2),
-                            InkWell(
-                              child: AppIcon(icon: Icons.add, size: 30),
-                              onTap: () {
-                                setState(() {
-                                  cnt++;
-                                  total += price;
-                                });
-                              },
-                            ),
-                          ],
                         ),
                         SizedBox(height: Dimensions.height20),
                         Row(
@@ -116,6 +82,19 @@ class _CartState extends State<Cart> {
                                   decoration: TextDecoration.lineThrough),
                             ),
                           ],
+                        ),
+                        SizedBox(height: Dimensions.height10),
+                        GestureDetector(
+                          child: Icon(
+                            Icons.favorite,
+                            color: Colors.pinkAccent,
+                          ),
+                          onTap: () {
+                            setState(() {
+                              cnt--;
+                              Get.snackbar('Product ABC Removed', 'Still $cnt items in wishlist');
+                            });
+                          },
                         )
                       ],
                     ),
@@ -124,34 +103,6 @@ class _CartState extends State<Cart> {
               ),
             );
           }),
-      bottomNavigationBar: InkWell(
-        child: Container(
-          height: 60,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radius20),
-              color: AppColors.buttonBackgroundColor),
-          child: Container(
-            color: Color(0xFFFCF4E4),
-            child: Center(
-              child: Text(
-                'Checkout     ₹$total',
-                style: TextStyle(
-                  fontSize: Dimensions.font20,
-                  fontFamily: 'Roboto',
-                  color: Colors.black87,
-                ),
-              ),
-            ),
-          ),
-        ),
-        onTap: () {
-          if (cnt == 0) {
-            Get.snackbar('Cart is Empty', 'Add products to cart from menu');
-          } else {
-            Get.snackbar('Processing', 'Wait until processing');
-          }
-        },
-      ),
     );
   }
 }

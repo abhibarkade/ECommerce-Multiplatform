@@ -2,7 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:oktoast/oktoast.dart';
+import 'package:shopstag/pages/cart/cart.dart';
 import 'package:shopstag/util/colors.dart';
 import 'package:shopstag/util/dimensions.dart';
 import 'package:shopstag/widgets/app_icon.dart';
@@ -53,7 +53,8 @@ class _RecommendedProductDetailsState extends State<RecommendedProductDetails> {
                   ),
                   onTap: () {
                     setState(() {
-                      showToast('Shopping Cart');
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (cnt) => Cart()));
                     });
                   },
                 ),
