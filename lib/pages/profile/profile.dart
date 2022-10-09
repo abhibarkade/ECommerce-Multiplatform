@@ -23,15 +23,14 @@ class _ProfileState extends State<Profile> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(90),
-                child: Container(
-                  height: 180,
-                  width: 180,
-                  child: Image.asset('assets/images/productDetails.jpg'),
-                ),
-              ),
-
+              // ClipRRect(
+              //   borderRadius: BorderRadius.circular(90),
+              //   child: Container(
+              //     height: 180,
+              //     width: 180,
+              //     child: Image.asset('assets/images/productDetails.jpg'),
+              //   ),
+              // ),
               //  Username
               Container(
                 margin: EdgeInsets.only(
@@ -50,7 +49,7 @@ class _ProfileState extends State<Profile> {
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Username',
+                      hintText: 'Full Name',
                       prefixIcon: Icon(Icons.person)),
                 ),
                 decoration: BoxDecoration(
@@ -108,7 +107,66 @@ class _ProfileState extends State<Profile> {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(Dimensions.radius9)),
-              )
+              ),
+              // Location
+              InkWell(
+                child: Container(
+                  margin: EdgeInsets.only(
+                    top: Dimensions.height15,
+                    right: Dimensions.width30,
+                    left: Dimensions.width30,
+                  ),
+                  padding: EdgeInsets.only(
+                    left: Dimensions.width30,
+                    right: Dimensions.width30,
+                    top: Dimensions.width15,
+                    bottom: Dimensions.width15,
+                  ),
+                  child: TextField(
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Location',
+                        prefixIcon: Icon(Icons.location_on),
+                        prefixIconColor: AppColors.mainColor),
+                  ),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(Dimensions.radius9)),
+                ),
+                onTap: () {
+                  setState(() {});
+                },
+              ),
+              SizedBox(height: Dimensions.height48),
+              Container(
+                margin: EdgeInsets.only(
+                  top: Dimensions.height15,
+                  right: Dimensions.width30,
+                  left: Dimensions.width30,
+                ),
+                padding: EdgeInsets.only(
+                  left: Dimensions.width30,
+                  right: Dimensions.width30,
+                  top: Dimensions.width15,
+                  bottom: Dimensions.width15,
+                ),
+                width: double.maxFinite,
+                height: Dimensions.height30 * 2,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      elevation: 12.0,
+                      textStyle: const TextStyle(color: Colors.white)),
+                  child: const Text(
+                    'UPDATE',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
